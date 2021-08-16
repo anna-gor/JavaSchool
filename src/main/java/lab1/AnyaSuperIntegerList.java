@@ -3,10 +3,13 @@ package lab1;
 import java.util.Arrays;
 
 public class AnyaSuperIntegerList implements SuperIntegerList {
-    //int[] intArray = new int[]{1, 2, 3, 4, 5};
-    int[] intArray = new int[0];
-    int size = intArray.length;
+    int[] intArray;
+    int size;
 
+    public AnyaSuperIntegerList(int[] someIntegers) {
+        this.intArray = someIntegers;
+        this.size = intArray.length;
+    }
 
     @Override
     public void add(int number) {
@@ -20,6 +23,10 @@ public class AnyaSuperIntegerList implements SuperIntegerList {
         int j;
         if (index >= size) {
             System.out.println("Error: Index greater than length of array");
+            return;
+        }
+        if (index < 0) {
+            throw new IllegalArgumentException();
         } else {
             for (j = 0; j < size; j++) {
                 if (j == index) {
@@ -47,7 +54,15 @@ public class AnyaSuperIntegerList implements SuperIntegerList {
 
     @Override
     public int get(int index) {
-        return intArray[index];
+        if (index < 0) {
+            throw new IllegalArgumentException();
+        }
+        if (index >= size) {
+            System.out.println("Error: Index greater than length of array");
+            throw new ArrayIndexOutOfBoundsException();
+        } else {
+            return intArray[index];
+        }
     }
 
     @Override
@@ -60,20 +75,4 @@ public class AnyaSuperIntegerList implements SuperIntegerList {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        AnyaSuperIntegerList array = new AnyaSuperIntegerList();
-        array.add(1);
-        array.add(2);
-        array.add(3);
-        array.add(4);
-        array.printAll();
-        System.out.println("Element: " + array.get(0));
-        array.removeByValue(1);
-        array.printAll();
-        System.out.println();
-        array.removeByIndex(2);
-        array.printAll();
-        array.removeByIndex(10);
-        array.printAll();
-    }
 }
