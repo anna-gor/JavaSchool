@@ -3,13 +3,15 @@ package lab1;
 import java.util.Arrays;
 
 public class AnyaSuperIntegerList implements SuperIntegerList {
-    int[] intArray = new int[]{1, 2, 3, 4, 5};
+    //int[] intArray = new int[]{1, 2, 3, 4, 5};
+    int[] intArray = new int[0];
     int size = intArray.length;
 
 
     @Override
     public void add(int number) {
         intArray = Arrays.copyOf(intArray, size + 1);
+        size++;
         intArray[size - 1] = number;
     }
 
@@ -60,11 +62,12 @@ public class AnyaSuperIntegerList implements SuperIntegerList {
 
     public static void main(String[] args) {
         AnyaSuperIntegerList array = new AnyaSuperIntegerList();
+        array.add(1);
+        array.add(2);
         array.add(3);
+        array.add(4);
         array.printAll();
-        System.out.println();
-        System.out.println(array.get(0));
-        System.out.println();
+        System.out.println("Element: " + array.get(0));
         array.removeByValue(1);
         array.printAll();
         System.out.println();
