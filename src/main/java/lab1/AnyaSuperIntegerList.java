@@ -34,8 +34,9 @@ public class AnyaSuperIntegerList implements SuperIntegerList {
                     break;
                 }
             }
-            for (int k = j; k < size; k++)
+            for (int k = j; k < size; k++) {
                 intArray[k] = intArray[k + 1];
+            }
         }
     }
 
@@ -48,8 +49,9 @@ public class AnyaSuperIntegerList implements SuperIntegerList {
                 break;
             }
         }
-        for (int k = j; k < size; k++)
+        for (int k = j; k < size; k++) {
             intArray[k] = intArray[k + 1];
+        }
     }
 
     @Override
