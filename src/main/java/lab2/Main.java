@@ -9,9 +9,9 @@ public class Main {
 
         Client client = Client.builder()
                 .bonus(30)
-                .name("Nikita")
-                .salary(20000)
-                .debt(12)
+                .name("Vasya")
+                .salary(200000)
+                .debt(8)
                 .build();
 
         System.out.println(client);
