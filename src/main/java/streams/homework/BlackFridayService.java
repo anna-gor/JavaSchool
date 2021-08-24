@@ -23,7 +23,8 @@ public class BlackFridayService {
                 .filter(d -> d.getDayOfMonth() == 13)
                 .collect(Collectors.groupingBy(d -> d.getYear(), Collectors.counting()))
                 .entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach(e -> System.out.println(e.getKey() + " - " + e.getValue()));
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEach(e -> System.out.println(e.getKey() + " - " + e.getValue()));
 
     }
 
