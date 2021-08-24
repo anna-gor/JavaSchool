@@ -21,7 +21,7 @@ public class BlackFridayService {
                 .limit(ChronoUnit.DAYS.between(startDate, endDate) + 1)
                 .filter(d -> d.getDayOfWeek().equals(DayOfWeek.FRIDAY))
                 .filter(d -> d.getDayOfMonth() == 13)
-                .collect(Collectors.groupingBy(d -> d.getYear(), Collectors.counting()))
+                .collect(Collectors.groupingBy(LocalDate::getYear, Collectors.counting()))
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEach(e -> System.out.println(e.getKey() + " - " + e.getValue()));
