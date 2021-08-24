@@ -16,7 +16,7 @@ public class BlackFridayService {
     public static void printBlackFridayPerYearSorted(int startYear, int endYear) {
 
         LocalDate startDate = LocalDate.of(startYear, 1, 1);
-        LocalDate endDate = LocalDate.of(endYear, 1, 1);
+        LocalDate endDate = LocalDate.of(endYear, 12, 31);
 
         Map<Object, Long> notSorted = Stream.iterate(startDate, d -> d.plusDays(1))
                 .limit(ChronoUnit.DAYS.between(startDate, endDate) + 1)
