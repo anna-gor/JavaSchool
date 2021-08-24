@@ -9,9 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * @author Evgeny Borisov
- */
+
 public class BlackFridayService {
 
     public static void printBlackFridayPerYearSorted(int startYear, int endYear) {
@@ -28,14 +26,6 @@ public class BlackFridayService {
                 .entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach(e -> System.out.println(e.getKey() + " - " + e.getValue()));
 
-        // 1972 - 3
-        // 1984 - 3
-        // 1986 - 3
-        // 1902 - 3
-        // 1901 - 2
-        // 1917 - 2
-        // 1915 - 2
-        // 1911 - 1
     }
 
     public static void main(String[] args) {
