@@ -22,7 +22,8 @@ public class BlackFridayService {
         Map<Object, Long> notSorted = Stream.iterate(startDate, d -> d.plusDays(1))
                 .limit(ChronoUnit.DAYS.between(startDate, endDate) + 1)
                 .filter(d -> d.getDayOfWeek().equals(DayOfWeek.FRIDAY))
-                .filter(d -> d.getDayOfMonth() == 13).collect(Collectors.groupingBy(d -> d.getYear(), Collectors.counting()));
+                .filter(d -> d.getDayOfMonth() == 13)
+                .collect(Collectors.groupingBy(d -> d.getYear(), Collectors.counting()));
         Map<Object, Long> finalResult = new LinkedHashMap<>();
         notSorted.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
