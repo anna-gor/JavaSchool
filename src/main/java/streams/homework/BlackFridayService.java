@@ -19,16 +19,14 @@ public class BlackFridayService {
         LocalDate startDate = LocalDate.of(startYear, 1, 1);
         LocalDate endDate = LocalDate.of(endYear, 12, 31);
 
-        Map<Object, Long> notSorted = Stream.iterate(startDate, d -> d.plusDays(1))
+
+        Stream.iterate(startDate, d -> d.plusDays(1))
                 .limit(ChronoUnit.DAYS.between(startDate, endDate) + 1)
                 .filter(d -> d.getDayOfWeek().equals(DayOfWeek.FRIDAY))
                 .filter(d -> d.getDayOfMonth() == 13)
-                .collect(Collectors.groupingBy(d -> d.getYear(), Collectors.counting()));
-        Map<Object, Long> finalResult = new LinkedHashMap<>();
-        notSorted.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(e -> finalResult.put(e.getKey(), e.getValue()));
-        finalResult.entrySet().stream().forEach(e -> System.out.println(e.getKey() + " - " + e.getValue()));
+                .collect(Collectors.groupingBy(d -> d.getYear(), Collectors.counting()))
+                .entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEach(e -> System.out.println(e.getKey() + " - " + e.getValue()));
 
         // 1972 - 3
         // 1984 - 3
